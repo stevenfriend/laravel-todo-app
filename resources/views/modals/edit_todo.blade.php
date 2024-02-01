@@ -9,7 +9,10 @@
                 @csrf
                 @method('patch')
                 <div class="modal-body">
-                    <input type="text" class="form-control" name="content" value="{{ $todo->content }}">
+                    <label class="mx-1 mb-2" for="todo-content">Todo</label><br>
+                    <input type="text" class="form-control mb-2" id="todo-content" name="content" value="{{ $todo->content }}">
+                    <label class="mx-1 mb-2" for="todo-description">詳細</label><br>
+                    <input type="text" class="form-control mb-2" id="todo-description" name="description" value="{{ $todo->description }}">
                     <div class="d-flex flex-wrap">
                         @foreach ($tags as $tag)
                             <label>  

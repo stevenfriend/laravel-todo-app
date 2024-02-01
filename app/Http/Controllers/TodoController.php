@@ -18,10 +18,12 @@ class TodoController extends Controller
     public function store(Request $request, Goal $goal) {
         $request->validate([
             'content' => 'required',
+            'description' => 'required',
         ]);
 
         $todo = new Todo();
         $todo->content = $request->input('content');
+        $todo->description = $request->input('description');
         $todo->user_id = Auth::id();
         $todo->goal_id = $goal->id;
         $todo->done = false;
@@ -42,9 +44,11 @@ class TodoController extends Controller
     public function update(Request $request, Goal $goal, Todo $todo) {
         $request->validate([
             'content' => 'required',
+            'description' => 'required',
         ]);
 
         $todo->content = $request->input('content');
+        $todo->description = $request->input('description');
         $todo->user_id = Auth::id();
         $todo->goal_id = $goal->id;
         $todo->done = $request->boolean('done', $todo->done);
